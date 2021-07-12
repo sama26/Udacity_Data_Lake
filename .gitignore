@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#Projecct Data and sensitive Files
+/song_data
+/log_data
+dl.cfg
