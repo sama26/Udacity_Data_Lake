@@ -20,7 +20,7 @@ def create_spark_session():
     """
     spark = SparkSession \
         .builder \
-        .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:2.7.0") \
+        .config("spark.jars.packages", "org.apache.hadoop:hadoop-aws:3.1.2") \
         .getOrCreate()
     return spark
 
@@ -169,13 +169,15 @@ def process_log_data(spark, input_data, output_data):
 
 def main():
     """
+    Establishes a spark session and processes song and log data using the input and output data paths
 
-    :return:
+    :return: N/A
     """
     spark = create_spark_session()
     input_data = "s3a://udacity-dend/"
-    # input_data = "/home/sam/Documents/Udacity Data Engineer/Project 4 - Data Lake/Udacity---Data-Lake-Project/"
-    output_data = "/home/sam/Documents/Udacity Data Engineer/Project 4 - Data Lake/Udacity---Data-Lake-Project/Output/"
+    output_data = "s3a://udacity-dend/output"
+    # input_data = "/home/sam/Documents/Udacity Data Engineer/Udacity_Data_Lake/"
+    # output_data = "/home/sam/Documents/Udacity Data Engineer/Udacity_Data_Lake/Output/"
     
     process_song_data(spark, input_data, output_data)    
     process_log_data(spark, input_data, output_data)
